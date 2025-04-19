@@ -1,0 +1,11 @@
+pem
+*.log
+*.toml
+.DS_Store
+.idea
+.exe
+config/
+z_*
+
+*.log_lock
+*.log_symlink
