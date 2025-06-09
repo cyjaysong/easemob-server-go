@@ -32,11 +32,5 @@ func New(host, orgName, appName, clientId, clientSecret string, devMode bool) (c
 	}
 	client = &Client{reqClient: reqClient, appKey: fmt.Sprintf("%s#%s", orgName, appName),
 		host: host, orgName: orgName, appName: appName, clientId: clientId, clientSecret: clientSecret}
-
-	// TTL:设为0表示AppToken永久有效
-	//data := &ClientParam{GrantType: "client_credentials", ClientId: clientId, ClientSecret: clientSecret, TTL: ttl}
-	//if client.appToken, err = client.GetAppToken(context.Background(), data); err != nil {
-	//	return nil, err
-	//}
 	return
 }

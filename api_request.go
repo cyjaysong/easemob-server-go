@@ -67,7 +67,7 @@ type ResultResponse struct {
 }
 
 func (c *Client) doReq(ctx context.Context, method, pathSuffix string, params map[string]any, data any, res any) (err error) {
-	r := c.reqClient.R().SetContext(ctx)
+	r := c.reqClient.R().SetContext(ctx).SetBearerAuthToken(c.appToken)
 	if params != nil {
 		r.SetQueryParamsAnyType(params)
 	}

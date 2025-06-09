@@ -29,14 +29,12 @@ func (c *Client) GetAppToken(ctx context.Context, ttl int64) (appToken *GetAppTo
 	if err = c.doReq(ctx, http.MethodPost, "token", nil, data, appToken); err != nil {
 		return nil, err
 	}
-	c.reqClient.SetCommonBearerAuthToken(appToken.AccessToken)
-	c.appToken = appToken.AccessToken
+	c.SetAppToken(appToken.AccessToken)
 	return
 }
 
 // SetAppToken 设置AppToken, 一般用于分布式部署的时候，业务层统一维护AppToken，为节点设置AppToken
 func (c *Client) SetAppToken(appToken string) {
-	c.reqClient.SetCommonBearerAuthToken(appToken)
 	c.appToken = appToken
 }
 
